@@ -1,0 +1,244 @@
+Script started on Thu 01 Sep 2016 11:13:59 AM EDT
+bash: alias: `/home/kurmasz/public/CS451/bin/jlsCPUTester': invalid alias name
+bash: alias: tester: not found
+[?1034h[eos12:~/Documents/os/labs/lab1]$ ls
+sampleProgram1.c  typescript
+[eos12:~/Documents/os/labs/lab1]$ gcc -Wall -lm sampleProgram1.c 
+[01m[KsampleProgram1.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[KsampleProgram1.c:7:2:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K,[m[K’ or ‘[01m[K;[m[K’ before ‘[01m[Kprintf[m[K’
+  printf ("Hello, world.\n");
+[01;32m[K  ^[m[K
+[eos12:~/Documents/os/labs/lab1]$ vim sampleProgram1.c 
+[?1049h[?1h=[2;1H▽[6n[1;1H  [1;1H[1;24r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[24;1H"sampleProgram1.c" 11L, 194C[>c[1;1H[35m#include [m[31m<stdio.h>[m
+[35m#include [m[31m<math.h>[m
+
+[32mint[m main()
+[46m{[m[6;9H[32mdouble[m num [30m[43m=[m [31m0.0[m[7;9Hprintf ([31m"Hello, world.[m[35m\n[m[31m"[m);[8;9Hnum [30m[43m=[m pow([31m2[m,[31m28[m);[9;9Hprintf ([31m"You are the [m[35m%f[m[31m person to write this program![m[35m\n[m[31m"[m, num);[10;9H[33mreturn[m [31m0[m;
+[46m}[m
+[1m[34m~                                                                               [13;1H~                                                                               [14;1H~                                                                               [15;1H~                                                                               [16;1H~                                                                               [17;1H~                                                                               [18;1H~                                                                               [19;1H~                                                                               [20;1H~                                                                               [21;1H~                                                                               [22;1H~                                                                               [23;1H~                                                                               [m[24;63H11,1[10CAll[11;1H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[24;1H[1m-- INSERT --[m[24;13H[K[24;63H11,1[10CAll[11;1H[?12l[?25h[?25l[5;1H{[11;1H}[24;64H0[10;1H[?12l[?25h[?25l[24;63H9,1 [9;1H[?12l[?25h[?25l[24;63H8[8;1H[?12l[?25h[?25l[24;63H7[7;1H[?12l[?25h[?25l[24;63H6[6;1H[?12l[?25h[?25l[24;65H2-9[6;9H[?12l[?25h[?25l[24;65H9-16[6;16H[?12l[?25h[?25l[24;65H13-20[6;20H[?12l[?25h[?25l[24;66H5-22[6;22H[?12l[?25h[?25l[24;66H6-23[6;23H[?12l[?25h[?25l[24;66H7-24[6;24H[?12l[?25h[?25l[24;63H7,2-9  [7;9H[?12l[?25h[?25l[24;65H1  [7;1H[?12l[?25h[?25li[24;65H2[7;2H[?12l[?25h[?25l[24;65H1[7;1H[?12l[?25h[?25l[24;65H2[7;2H[?12l[?25h[?25l [24;65H1[7;1H[?12l[?25h[?25l[6;23r[23;1H
+[1;24r[6;9H[32mdouble[m num [30m[43m=[m [31m0.0[m        printf ([31m"Hello, world.[m[35m\n[m[31m"[m);[23;1H[1m[34m~                                                                               [m[24;63H[K[24;63H6,18-25[7CAll[6;25H[?12l[?25h[?25l;[24;66H9-26[6;26H[?12l[?25h[?25l[7;23r[7;1H[L[1;24r[6;33H[K[7;9Hprintf ([31m"Hello, world.[m[35m\n[m[31m"[m);[24;63H[K[24;63H7,1[11CAll[7;1H[?12l[?25h[24;1H[K[7;1H[?25l[24;63H7,1-8[9CAll[7;8H[?12l[?25h[?25l[24;63H[K[24;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h[?25l"sampleProgram1.c" 11L, 195C written
+[?1l>[?12l[?25h[?1049l[eos12:~/Documents/os/labs/lab1]$ vim sampleProgram1.c [10@gcc -Wall -l[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[eos12:~/Documents/os/labs/lab1]$ ls
+a.out  sampleProgram1.c  typescript
+[eos12:~/Documents/os/labs/lab1]$ .;[K/a.out [K 0[K0[K[K- [K[K -o
+Hello, world.
+You are the 268435456.000000 person to write this program!
+[eos12:~/Documents/os/labs/lab1]$ gdb a.out
+[?1034hGNU gdb (GDB) Red Hat Enterprise Linux 7.6.1-80.el7
+Copyright (C) 2013 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /home/michiena/Documents/os/labs/lab1/a.out...(no debugging symbols found)...done.
+(gdb) b main
+Breakpoint 1 at 0x400624
+(gdb) ./[K[K./a.out -0[Ko
+Undefined command: "".  Try "help".
+(gdb) ./a.out
+Undefined command: "".  Try "help".
+(gdb) wq[K[Khelp
+List of classes of commands:
+
+aliases -- Aliases of other commands
+breakpoints -- Making program stop at certain points
+data -- Examining data
+files -- Specifying and examining files
+internals -- Maintenance commands
+obscure -- Obscure features
+running -- Running the program
+stack -- Examining the stack
+status -- Status inquiries
+support -- Support facilities
+tracepoints -- Tracing of program execution without stopping the program
+user-defined -- User-defined commands
+
+Type "help" followed by a class name for a list of commands in that class.
+Type "help all" for the list of all commands.
+Type "help" followed by command name for full documentation.
+Type "apropos word" to search for commands related to "word".
+Command name abbreviations are allowed if unambiguous.
+(gdb) q[Kquit
+[eos12:~/Documents/os/labs/lab1]$ gdb a.out./a.out -ols[Kgcc -Wall -lm sampleProgram1.c ls[K./a.out -o
+Hello, world.
+You are the 268435456.000000 person to write this program!
+[eos12:~/Documents/os/labs/lab1]$ gdb a.out
+[?1034hGNU gdb (GDB) Red Hat Enterprise Linux 7.6.1-80.el7
+Copyright (C) 2013 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /home/michiena/Documents/os/labs/lab1/a.out...(no debugging symbols found)...done.
+(gdb) b main
+Breakpoint 1 at 0x400624
+(gdb) n
+The program is not being run.
+(gdb) r
+Starting program: /home/michiena/Documents/os/labs/lab1/a.out 
+/home/michiena/.bashrc: line 4: alias: `/home/kurmasz/public/CS451/bin/jlsCPUTester': invalid alias name
+/home/michiena/.bashrc: line 4: alias: tester: not found
+
+Breakpoint 1, 0x0000000000400624 in main ()
+Missing separate debuginfos, use: debuginfo-install glibc-2.17-106.el7_2.8.x86_64
+(gdb) p num
+No symbol table is loaded.  Use the "file" command.
+(gdb) n
+Single stepping until exit from function main,
+which has no line number information.
+Hello, world.
+You are the 268435456.000000 person to write this program!
+0x00007ffff7738b15 in __libc_start_main () from /lib64/libc.so.6
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y n
+Program not restarted.
+(gdb) n
+Single stepping until exit from function __libc_start_main,
+which has no line number information.
+[Inferior 1 (process 10587) exited normally]
+(gdb) p num
+No symbol table is loaded.  Use the "file" command.
+(gdb) p nu[K[K[K[Kn
+The program is not being run.
+(gdb) n
+The program is not being run.
+(gdb) n
+The program is not being run.
+(gdb) n
+The program is not being run.
+(gdb) n
+The program is not being run.
+(gdb) r
+Starting program: /home/michiena/Documents/os/labs/lab1/a.out 
+/home/michiena/.bashrc: line 4: alias: `/home/kurmasz/public/CS451/bin/jlsCPUTester': invalid alias name
+/home/michiena/.bashrc: line 4: alias: tester: not found
+
+Breakpoint 1, 0x0000000000400624 in main ()
+(gdb) n
+Single stepping until exit from function main,
+which has no line number information.
+Hello, world.
+You are the 268435456.000000 person to write this program!
+0x00007ffff7738b15 in __libc_start_main () from /lib64/libc.so.6
+(gdb) r[Kn
+Single stepping until exit from function __libc_start_main,
+which has no line number information.
+[Inferior 1 (process 10600) exited normally]
+(gdb) r
+Starting program: /home/michiena/Documents/os/labs/lab1/a.out 
+/home/michiena/.bashrc: line 4: alias: `/home/kurmasz/public/CS451/bin/jlsCPUTester': invalid alias name
+/home/michiena/.bashrc: line 4: alias: tester: not found
+
+Breakpoint 1, 0x0000000000400624 in main ()
+(gdb) s
+Single stepping until exit from function main,
+which has no line number information.
+Hello, world.
+You are the 268435456.000000 person to write this program!
+0x00007ffff7738b15 in __libc_start_main () from /lib64/libc.so.6
+(gdb) n
+Single stepping until exit from function __libc_start_main,
+which has no line number information.
+[Inferior 1 (process 10660) exited normally]
+(gdb) r
+Starting program: /home/michiena/Documents/os/labs/lab1/a.out 
+/home/michiena/.bashrc: line 4: alias: `/home/kurmasz/public/CS451/bin/jlsCPUTester': invalid alias name
+/home/michiena/.bashrc: line 4: alias: tester: not found
+
+Breakpoint 1, 0x0000000000400624 in main ()
+(gdb) w num
+Ambiguous command "w num": watch, wh, whatis, where, while, while-stepping, winheight, ws.
+(gdb) p
+The history is empty.
+(gdb) num
+Undefined command: "num".  Try "help".
+(gdb) num[K[K[Ks
+Single stepping until exit from function main,
+which has no line number information.
+Hello, world.
+You are the 268435456.000000 person to write this program!
+0x00007ffff7738b15 in __libc_start_main () from /lib64/libc.so.6
+(gdb) p num
+No symbol table is loaded.  Use the "file" command.
+(gdb) n
+Single stepping until exit from function __libc_start_main,
+which has no line number information.
+[Inferior 1 (process 10669) exited normally]
+(gdb) r
+Starting program: /home/michiena/Documents/os/labs/lab1/a.out 
+/home/michiena/.bashrc: line 4: alias: `/home/kurmasz/public/CS451/bin/jlsCPUTester': invalid alias name
+/home/michiena/.bashrc: line 4: alias: tester: not found
+
+Breakpoint 1, 0x0000000000400624 in main ()
+(gdb) exit
+Undefined command: "exit".  Try "help".
+(gdb) ^CQuit
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 10678] will be killed.
+
+Quit anyway? (y or n) y
+[eos12:~/Documents/os/labs/lab1]$ gdb a.out-a.out a.outga.out a.out[1Pa.out[1Pa.out[1Pa.outga.out a.out[1Pa.out[1Pa.out[1Pa.outCa.outCa.out[1Pa.out[1Pa.out[1Pa.out[1Pa.out[1Pa.out[1Pa.out./a.out -o[1Pgdb a.out./a.out -o[1Pgdb a.out./a.out -o[1Pgdb a.out./a.out -ols[Kgcc -Wall -lm sampleProgram1.c [C[1@ [1@-[1@g
+[eos12:~/Documents/os/labs/lab1]$ gcc -Wall -lm -g sampleProgram1.c a.out[K./a.out -o[1Pgdb a.out./a.out -o
+Hello, world.
+You are the 268435456.000000 person to write this program!
+[eos12:~/Documents/os/labs/lab1]$ ./a.out -ogcc -Wall -lm -g sampleProgram1.c ./a.out -o[Kgcc -Wall -lm -g sampleProgram1.c a.out[K./a.out -o[5Pa.outgcc -Wall -lm -g sampleProgram1.c ./a.out -o[K[K./a.out -ogcc -Wall -lm -g sampleProgram1.c a.out[K./a.out -o[1Pgdb a.out
+[?1034hGNU gdb (GDB) Red Hat Enterprise Linux 7.6.1-80.el7
+Copyright (C) 2013 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /home/michiena/Documents/os/labs/lab1/a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x400628: file sampleProgram1.c, line 6.
+(gdb) r
+Starting program: /home/michiena/Documents/os/labs/lab1/a.out 
+/home/michiena/.bashrc: line 4: alias: `/home/kurmasz/public/CS451/bin/jlsCPUTester': invalid alias name
+/home/michiena/.bashrc: line 4: alias: tester: not found
+
+Breakpoint 1, main () at sampleProgram1.c:6
+6		double num = 0.0;
+Missing separate debuginfos, use: debuginfo-install glibc-2.17-106.el7_2.8.x86_64
+(gdb) p num
+$1 = 0
+(gdb) n
+7		printf ("Hello, world.\n");
+(gdb) n
+Hello, world.
+8		num = pow(2,28);
+(gdb) n
+9		printf ("You are the %f person to write this program!\n", num);
+(gdb) pnu[K[K num
+$2 = 268435456
+(gdb) n
+You are the 268435456.000000 person to write this program!
+10		return 0;
+(gdb) n
+11	}
+(gdb) n
+0x00007ffff7738b15 in __libc_start_main () from /lib64/libc.so.6
+(gdb) n
+Single stepping until exit from function __libc_start_main,
+which has no line number information.
+[Inferior 1 (process 10711) exited normally]
+(gdb) n
+The program is not being run.
+(gdb) dont[Ke
+Undefined command: "done".  Try "help".
+(gdb) quit
+[eos12:~/Documents/os/labs/lab1]$ vim [K[K[K[Kexit
+exit
+
+Script done on Thu 01 Sep 2016 11:26:42 AM EDT
