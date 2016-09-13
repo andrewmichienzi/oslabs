@@ -5,20 +5,33 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <sys/time.h>
+#include <sys/resource.h>
 
 #define SIZE 50
 int main()
 {
-  	char *quit;
+	struct timeval total_time;
+	int previous_sec, previous_usec;
+	long previous_ics = 0;
+	previous_sec = 0;
+	previous_usec=0;
   	//fgets adds a new line to the end of a string
+  	char *quit;
 	quit = "quit";
- 	while(1){ 
+ 	while(1){
+		/*
+		*
+		*TODO: Add warning for length of entry
+		*
+		*/ 
   		char *datain;
   		datain = malloc(SIZE);
-
+		//Creating cursor
   		printf("\n");
   		printf(">>");
   		fgets(datain, SIZE, stdin);
+		//if datain is empty
 		if(!strcmp("\n", datain)){
 			free(datain);
 			continue;
@@ -37,27 +50,47 @@ int main()
 			i++;
 			command[i] = strtok(NULL, " ");
 		}while(command[i]);
-		//command[i] = '\0';	
   		pid_t pid;
   		int status;
-
+		//Fork and Failure catch
   		if((pid=fork())<0){
     			perror("fork failure");
     			free(datain);
 			free(quit);
     			exit(1);
   		}
+    		//Child. Execute and catch failure
   		if(pid==0){
-    			//child
     			execvp(command[0], &command[0]);
       			perror("\nexec failedyooooooo");
       			free(datain);
       			exit(1);	
   		}
+    		//Parent
   		else{
-    			//Parent
     			wait(&status);
- 		}
+			
+			//Find CPU usage time
+			struct rusage usage;
+			int sec, usec;
+			long ics;
+			getrusage(RUSAGE_CHILDREN, &usage);
+			
+			//Find time
+			total_time = usage.ru_utime;
+			sec = total_time.tv_sec - previous_sec;
+			previous_sec = sec;
+			usec = total_time.tv_usec - previous_usec;
+			previous_usec = usec;
+			printf("\nUsage time:\t\t%ds, %dus", sec, usec);
+ 			
+			//Find involuntary context switches
+			ics = usage.ru_nivcsw - previous_ics;
+			printf("\nInvoluntary Context Switches:\t%ld\n", ics);
+			printf("usage.ru_nivcsw:\t%ld", usage.ru_nivcsw);
+			printf("\nprevious_ics:\t%ld\n", previous_ics);
+			previous_ics = ics;
+		}	
 		free(datain);
 	}
 	free(quit);
