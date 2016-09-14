@@ -19,10 +19,9 @@
 int main()
 {
 	struct timeval total_time;
-	int previous_sec, previous_usec;
+	struct timeval previous_time = {tv_sec:0, tv_usec:0};
+	struct timeval time_diff;
 	long previous_ics = 0;
-	previous_sec = 0;
-	previous_usec=0;
   	//fgets adds a new line to the end of a string
   	char *quit;
 	quit = "quit";
@@ -83,18 +82,17 @@ int main()
 			
 			//Find time
 			total_time = usage.ru_utime;
-			sec = total_time.tv_sec - previous_sec;
-			previous_sec = sec;
-			usec = total_time.tv_usec - previous_usec;
-			previous_usec = usec;
+			timersub(&total_time, &previous_time, &time_diff);
+			sec = time_diff.tv_sec;
+			usec = time_diff.tv_usec;
+			previous_time.tv_sec = total_time.tv_sec;
+			previous_time.tv_usec = total_time.tv_usec;
 			printf("\nUsage time:\t%ds, %dus", sec, usec);
  			
 			//Find involuntary context switches
 			ics = usage.ru_nivcsw - previous_ics;
 			printf("\nICS:\t\t%ld\n", ics);
-			//printf("usage.ru_nivcsw:\t%ld", usage.ru_nivcsw);
-			//printf("\nprevious_ics:\t%ld\n", previous_ics);
-			previous_ics = ics;
+			previous_ics = usage.ru_nivcsw;
 		}	
 		free(datain);
 	}
