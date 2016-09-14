@@ -8,7 +8,14 @@
 #include <sys/time.h>
 #include <sys/resource.h>
 
-#define SIZE 50
+#define SIZE 256
+#define NUMOFWORDS 25
+
+/*
+ * Authors: Andrew Michienzi and Vignesh Suresh
+ *
+ * The purpose of this code is to learn the forking process and create a simple  * Unix shell 
+ */
 int main()
 {
 	struct timeval total_time;
@@ -19,12 +26,10 @@ int main()
   	//fgets adds a new line to the end of a string
   	char *quit;
 	quit = "quit";
+	printf("\nMax number of characters:\t%d\n", SIZE);
+	printf("Max number of args:\t\t%d\n", NUMOFWORDS);
+
  	while(1){
-		/*
-		*
-		*TODO: Add warning for length of entry
-		*
-		*/ 
   		char *datain;
   		datain = malloc(SIZE);
 		//Creating cursor
@@ -43,7 +48,7 @@ int main()
     			free(datain);
     			exit(0);
   		}
-	  	char* command[50];	
+	  	char* command[NUMOFWORDS];	
   		int i = 0;
   		command[i] = strtok(datain, " ");
 		do{
@@ -82,13 +87,13 @@ int main()
 			previous_sec = sec;
 			usec = total_time.tv_usec - previous_usec;
 			previous_usec = usec;
-			printf("\nUsage time:\t\t%ds, %dus", sec, usec);
+			printf("\nUsage time:\t%ds, %dus", sec, usec);
  			
 			//Find involuntary context switches
 			ics = usage.ru_nivcsw - previous_ics;
-			printf("\nInvoluntary Context Switches:\t%ld\n", ics);
-			printf("usage.ru_nivcsw:\t%ld", usage.ru_nivcsw);
-			printf("\nprevious_ics:\t%ld\n", previous_ics);
+			printf("\nICS:\t\t%ld\n", ics);
+			//printf("usage.ru_nivcsw:\t%ld", usage.ru_nivcsw);
+			//printf("\nprevious_ics:\t%ld\n", previous_ics);
 			previous_ics = ics;
 		}	
 		free(datain);
