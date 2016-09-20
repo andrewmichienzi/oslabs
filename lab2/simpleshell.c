@@ -14,7 +14,7 @@
 /*
  * Authors: Andrew Michienzi and Vignesh Suresh
  *
- * The purpose of this code is to learn the forking process and create a simple  * Unix shell 
+ * The purpose of this code is to learn the forking process and create a simple  * 	* Unix shell 
  */
 int main()
 {
@@ -27,7 +27,6 @@ int main()
 	quit = "quit";
 	printf("\nMax number of characters:\t%d\n", SIZE);
 	printf("Max number of args:\t\t%d\n", NUMOFWORDS);
-
  	while(1){
   		char *datain;
   		datain = malloc(SIZE);
@@ -60,26 +59,26 @@ int main()
   		if((pid=fork())<0){
     			perror("fork failure");
     			free(datain);
-			free(quit);
+				free(quit);
     			exit(1);
   		}
-    		//Child. Execute and catch failure
+    	//Child. Execute and catch failure
   		if(pid==0){
     			execvp(command[0], &command[0]);
       			perror("\nexec failedyooooooo");
       			free(datain);
       			exit(1);	
   		}
-    		//Parent
+    	//Parent
   		else{
-    			wait(&status);
+    		wait(&status);
 			
 			//Find CPU usage time
 			struct rusage usage;
 			int sec, usec;
 			long ics;
 			getrusage(RUSAGE_CHILDREN, &usage);
-			
+
 			//Find time
 			total_time = usage.ru_utime;
 			timersub(&total_time, &previous_time, &time_diff);
