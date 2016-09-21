@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <signal.h>
 
-void signalHandler(int sigNum);
+void signalHandler(int);
 
 
 int main()
@@ -18,40 +18,32 @@ int main()
     	else if (pid == 0) {
         	//child
         	int i;
-		long ppid =(long) getppid();
         	while(1){
+			printf("waiting...\t");
 			i = rand() % 7;
 			sleep(i);
 			if(i%2){
-				kill(ppid, SIGUSR1);	
+				kill(getppid(), SIGUSR1);	
 			}
 			else{
-				kill(ppid, SIGUSR2);
+				kill(getppid(), SIGUSR2);
 			}	
 		}
 		exit(0);
     	}
     	else {
-		printf("spawned child PID# %d\n", pid);
+		printf("spawned child PID# %d", pid);
     		//parent
-    		signal(SIGUSR1, signalHandler);
-		signal(SIGUSR2, signalHandler);
-		signal(SIGINT, signalHandler);
-    		while(1){
-			printf("waiting...\t");
-			pause();
-		}
+    		while(1);
     	}
     	return 0;
 }
 
-void signalHandler(int sigNum){
+void sigHandler(int sigNum){
 	if(sigNum == SIGUSR1)
 		printf("received a SIGUSR1 signal\n");
 	if(sigNum == SIGUSR2)
 		printf("received a SIGUSR2 signal\n");
-	if(sigNum == SIGINT){
-		printf("received. That's it, I'm shutting you down\n");
-		exit(0);
-	}
+	if(sigNum == SIGINT)
+		printf("received. That's it, I'm shutting you down");
 }
