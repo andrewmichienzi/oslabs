@@ -6,7 +6,10 @@
 #include <signal.h>
 
 void signalHandler(int sigNum);
-
+/*
+ * This program focuses creating user defined signals, using kill function and   
+ * configuring SIGINT
+ */
 
 int main()
 { 
@@ -20,7 +23,7 @@ int main()
         	int i;
 		long ppid =(long) getppid();
         	while(1){
-			i = rand() % 7;
+			i = rand() % 6;
 			sleep(i);
 			if(i%2){
 				kill(ppid, SIGUSR1);	
@@ -39,6 +42,7 @@ int main()
 		signal(SIGINT, signalHandler);
     		while(1){
 			printf("waiting...\t");
+			fflush(stdout);
 			pause();
 		}
     	}
@@ -55,3 +59,14 @@ void signalHandler(int sigNum){
 		exit(0);
 	}
 }
+/* Sample Output
+spawned child PID# 26359
+waiting...      received a SIGUSR1 signal
+waiting...      received a SIGUSR2 signal
+waiting...      received a SIGUSR1 signal
+waiting...      received a SIGUSR1 signal
+waiting...      received a SIGUSR1 signal
+waiting...      received a SIGUSR1 signal
+waiting...      received a SIGUSR2 signal
+waiting...      ^Creceived. That's it, I'm shutting you down
+ */
