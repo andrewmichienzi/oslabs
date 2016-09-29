@@ -10,6 +10,11 @@ int requests_S = 0;
 int MAX_THREADS = 4096;
 void* writeToFile(void* filename);
 void sigHandler(int);
+
+/*
+* This program is used to simulate creating multiple threads to write to different files
+*/
+
 int main() 
 { 
 signal (SIGINT, sigHandler); 
@@ -28,6 +33,7 @@ while(1){
 	        exit (1); 
 	} 
 	else{
+	//Need to detach so the thread will end on its own
 		if(pthread_detach(*(threads + counter))){
 			printf("Error with Detach");
 			exit(1);
@@ -44,13 +50,13 @@ void* writeToFile(void* filename)
 	requests_R++;
 	int r = rand();
 	if((r % 5) > 3){
-		//20%
+		//20% chance we sleep for 7-10 seconds to simulate not finding file
 		sleep((r%3)+7);
 		printf("Could not find %s", file);
 		fflush(stdout);
 	}
 	else{
-		//80%
+		//80% Simulates writing to file
 		sleep(1);
 		printf("Printed to %s", file);
 		requests_S++;
@@ -60,8 +66,24 @@ void* writeToFile(void* filename)
 }
 
 void sigHandler(int sigNum){
+	//Prints off information about threads
 	printf("\n\nRequests received:\t%d\n", requests_R);
 	printf("Requests serviced:\t%d\n", requests_S);
 	fflush(stdout);
 	exit(0);	
 }
+
+/* Sample Output
+
+Filename:	Andrew
+Filename:	Is
+Filename:	Printed to Andrewcooler
+Filename:	than
+Filename:	Printed to coolerneshPrinted to than
+Filename:	Printed to neshforever
+Filename:	Printed to foreverCould not find Is^C
+
+Requests received:	6
+Requests serviced:	5
+
+*/
