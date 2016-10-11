@@ -7,6 +7,10 @@
 
 #define FOO 4096
 
+/*
+ * program1
+ */
+
 int main ()
 {
    int shmId;
