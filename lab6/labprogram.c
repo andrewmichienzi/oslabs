@@ -6,6 +6,8 @@
 #include <sys/ipc.h> 
 #include <sys/shm.h>
 #include <sys/stat.h>
+#include <sys/sem.h>
+#include <errno.h>
 
 #define SIZE 16
 /*
@@ -96,10 +98,10 @@ int main (int argc, char* argv[])
 		shmPtr[1] = temp;
 	    
 	    //signal
-        sempop(semId, &signal, 1);  
+        semop(semId, &signal, 1);  
       }
 
-   wait (&status); 
+   waitpid(pid, &status, 0);
    printf ("values: %li\t%li\n", shmPtr[0], shmPtr[1]);
 
    if (shmdt (shmPtr) < 0) { 
