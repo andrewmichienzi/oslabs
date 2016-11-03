@@ -115,3 +115,6 @@ int main (int argc, char* argv[])
 
    return 0; 
 } 
+
+/* 	./a.out 1000000
+	values: 0     1 */
