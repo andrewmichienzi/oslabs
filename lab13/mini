@@ -1,0 +1,27 @@
+Script started on Thu 08 Dec 2016 10:11:14 AM EST
+[?1034h[eos12:~/Documents/os/labs/lab13]$ cd sub/
+[eos12:~/Documents/os/labs/lab13/sub]$ ll[K[Kls
+junk
+[eos12:~/Documents/os/labs/lab13/sub]$ cd ..
+[eos12:~/Documents/os/labs/lab13]$ gcc -
+gcc: error: -E or -x required when input is from standard input
+[eos12:~/Documents/os/labs/lab13]$ W[Kgcc -Wall miniProgram.c 
+[eos12:~/Documents/os/labs/lab13]$ ./a.out -h hardlink sub/junk 
+Hard linked
+[eos12:~/Documents/os/labs/lab13]$ ./a.out -s softlink sub/junk 
+Soft linked
+[eos12:~/Documents/os/labs/lab13]$ ls -al
+total 40
+drwx--x--x  3 michiena users 4096 Dec  8 10:11 .
+drwx--x--x 13 michiena users 4096 Dec  1 10:31 ..
+-rwx--x--x  1 michiena users 8714 Dec  8 10:11 a.out
+-rw-------  2 michiena users  989 Dec  7 19:32 hardlink
+-rw-------  1 michiena users    0 Dec  8 10:11 mini
+-rw-------  1 michiena users  511 Dec  7 19:32 miniProgram.c
+-rw-------  1 michiena users  989 Dec  1 11:23 sampleprogram1b.c
+-rw-------  1 michiena users  965 Dec  7 19:15 sampleprogram1.c
+lrwxrwxrwx  1 michiena users    8 Dec  8 10:11 softlink -> sub/junk
+drwx--x--x  2 michiena users 4096 Dec  8 10:08 sub
+[eos12:~/Documents/os/labs/lab13]$ exit
+
+Script done on Thu 08 Dec 2016 10:11:52 AM EST
